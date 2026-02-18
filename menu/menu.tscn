@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dv5dksoyyl037"]
+
+[ext_resource type="AudioStream" uid="uid://dwqrx5cdhuruu" path="res://menu/naruto.mp3" id="1_j0t7f"]
+[ext_resource type="Script" uid="uid://bf4r2mg6pyvog" path="res://menu/menu.gd" id="1_pbjm4"]
+[ext_resource type="Texture2D" uid="uid://u04vn5bpc50m" path="res://menu/fondo.jpg" id="2_g18jx"]
+[ext_resource type="FontFile" uid="uid://di7qpy7ahcu56" path="res://menu/fuente.otf" id="3_6nwqt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pbjm4"]
+font = ExtResource("3_6nwqt")
+font_size = 100
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Control" unique_id=1442845976]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pbjm4")
+
+[node name="audio_menu" type="AudioStreamPlayer2D" parent="." unique_id=264484763]
+stream = ExtResource("1_j0t7f")
+autoplay = true
+parameters/looping = true
+
+[node name="sprite_menu" type="Sprite2D" parent="." unique_id=693249900]
+scale = Vector2(1.0657406, 0.8479686)
+texture = ExtResource("2_g18jx")
+centered = false
+
+[node name="vbox_menu" type="VBoxContainer" parent="." unique_id=1223604561]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.037
+anchor_bottom = 0.062000003
+offset_left = 88.0
+offset_top = 510.0
+offset_right = 309.376
+offset_bottom = 562.824
+metadata/_edit_group_ = true
+
+[node name="lbl_opciones" type="Label" parent="vbox_menu" unique_id=2070741488]
+layout_mode = 2
+text = "Opciones : "
+
+[node name="btn_start" type="Button" parent="vbox_menu" unique_id=258865158]
+layout_mode = 2
+text = "Start"
+
+[node name="btn_exit" type="Button" parent="vbox_menu" unique_id=1104801603]
+layout_mode = 2
+text = "Exit
+"
+
+[node name="lbl_narute" type="Label" parent="." unique_id=1109738232]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 402.0
+offset_right = 353.0
+offset_bottom = 533.0
+text = "Narute"
+label_settings = SubResource("LabelSettings_pbjm4")
+
+[connection signal="pressed" from="vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
+[connection signal="pressed" from="vbox_menu/btn_exit" to="." method="_on_btn_end_pressed"]
