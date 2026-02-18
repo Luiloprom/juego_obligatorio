@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bnmohuoi8wfjb"]
+
+[node name="Cactus" type="Area2D" unique_id=941346803]
+
+[node name="ani_cactus" type="Sprite2D" parent="." unique_id=682291503]
+
+[node name="col_cactus" type="CollisionShape2D" parent="." unique_id=502700827]

@@ -10,7 +10,7 @@
 [node name="enviroment" type="Node2D" unique_id=522719682]
 
 [node name="player_ninja" parent="." unique_id=931531948 instance=ExtResource("1_8l5cr")]
-position = Vector2(23, 541)
+position = Vector2(20, 546)
 scale = Vector2(0.15, 0.15)
 script = ExtResource("2_5x5yc")
 
