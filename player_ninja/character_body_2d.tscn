@@ -110,6 +110,7 @@
 [ext_resource type="Texture2D" uid="uid://bxepsusufdbqi" path="res://player_ninja/img/Throw__007.png" id="108_grua4"]
 [ext_resource type="Texture2D" uid="uid://6jn20b1fxfqh" path="res://player_ninja/img/Throw__008.png" id="109_fid60"]
 [ext_resource type="Texture2D" uid="uid://5yvk5xkyipup" path="res://player_ninja/img/Throw__009.png" id="110_vogm7"]
+[ext_resource type="PackedScene" uid="uid://d037rnedeto7e" path="res://contador/contador.tscn" id="111_4rhex"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6bx5v"]
 animations = [{
@@ -503,20 +504,29 @@ animations = [{
 size = Vector2(292, 501)
 
 [node name="player_ninja" type="CharacterBody2D" unique_id=931531948]
-position = Vector2(177, 266)
+position = Vector2(34, 550)
 scale = Vector2(0.25, 0.25)
 metadata/_edit_group_ = true
 
 [node name="ani_player" type="AnimatedSprite2D" parent="." unique_id=848682076]
 position = Vector2(3, -3)
 sprite_frames = SubResource("SpriteFrames_6bx5v")
-animation = &"run"
+animation = &"idle"
 
 [node name="col_player" type="CollisionShape2D" parent="." unique_id=1778586347]
 position = Vector2(2, -3)
 shape = SubResource("RectangleShape2D_axi5o")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=638696970]
+zoom = Vector2(2, 2)
 limit_left = 0
 limit_bottom = 648
 limit_smoothed = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1419782734]
+
+[node name="Contador" parent="CanvasLayer" unique_id=1870651267 instance=ExtResource("111_4rhex")]
+offset_left = -60.0
+offset_top = -31.0
+offset_right = -60.0
+offset_bottom = -31.0

@@ -6,9 +6,23 @@ extends CharacterBody2D
 @export var friction = 1500
 @export var jump_force = -700
 @export var air_acceleration = 2000
-@export var air_friction = 700
+@export var air_friction = 700# Contador de monedas
 
 @onready var ani_player = $ani_player
+@onready var contador: Control = $CanvasLayer/Contador
+
+var monedas: int = 0
+
+# Agregamos al player al grupo de jugadores
+func _ready() -> void:
+	add_to_group("jugadores")
+	contador.actualizar(0)
+	
+
+# Agrega una moneda al contador del jugador
+func add_moneda():
+	monedas+=1
+	contador.actualizar(monedas)
 
 func apply_gravity(delta):
 	if not is_on_floor():
