@@ -111,6 +111,7 @@
 [ext_resource type="Texture2D" uid="uid://6jn20b1fxfqh" path="res://player_ninja/img/Throw__008.png" id="109_fid60"]
 [ext_resource type="Texture2D" uid="uid://5yvk5xkyipup" path="res://player_ninja/img/Throw__009.png" id="110_vogm7"]
 [ext_resource type="PackedScene" uid="uid://d037rnedeto7e" path="res://contador/contador.tscn" id="111_4rhex"]
+[ext_resource type="AudioStream" uid="uid://uuf8pi346lk5" path="res://player_ninja/gameover.mp3" id="112_7y1p6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6bx5v"]
 animations = [{
@@ -182,41 +183,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"climb",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("21_gfttj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_3i08o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_77ci3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_av40s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_ghlpf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_pjmav")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_o3ire")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_ubp12")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_cq6b0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_jxdly")
-}],
-"loop": true,
-"name": &"dead",
 "speed": 10.0
 }, {
 "frames": [{
@@ -396,6 +362,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("21_gfttj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_3i08o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_77ci3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_av40s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ghlpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_pjmav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_o3ire")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ubp12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_cq6b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_jxdly")
+}],
+"loop": false,
+"name": &"muerte",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("81_re7f6")
 }, {
 "duration": 1.0,
@@ -505,13 +506,15 @@ size = Vector2(292, 501)
 
 [node name="player_ninja" type="CharacterBody2D" unique_id=931531948]
 position = Vector2(34, 550)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.15, 0.15)
 metadata/_edit_group_ = true
 
 [node name="ani_player" type="AnimatedSprite2D" parent="." unique_id=848682076]
 position = Vector2(3, -3)
 sprite_frames = SubResource("SpriteFrames_6bx5v")
-animation = &"idle"
+animation = &"muerte"
+frame = 9
+frame_progress = 1.0
 
 [node name="col_player" type="CollisionShape2D" parent="." unique_id=1778586347]
 position = Vector2(2, -3)
@@ -530,3 +533,10 @@ offset_left = -60.0
 offset_top = -31.0
 offset_right = -60.0
 offset_bottom = -31.0
+
+[node name="tiempo" type="Timer" parent="." unique_id=787245081]
+wait_time = 3.0
+
+[node name="audio_player" type="AudioStreamPlayer2D" parent="." unique_id=1427097048]
+scale = Vector2(0.15, 0.15)
+stream = ExtResource("112_7y1p6")

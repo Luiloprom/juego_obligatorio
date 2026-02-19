@@ -13,6 +13,19 @@ extends CharacterBody2D
 
 var monedas: int = 0
 
+func caer():
+	if global_position.y > 700:
+		morir()
+
+func morir():
+		# desactivo las físicas
+	set_physics_process(false)
+	$ani_player.play("muerte")
+	$audio_player.play()
+	$tiempo.start()
+	await $tiempo.timeout
+	get_tree().reload_current_scene()
+
 # Agregamos al player al grupo de jugadores
 func _ready() -> void:
 	add_to_group("jugadores")
@@ -64,6 +77,7 @@ func update_animation(input_axis):
 
 func _physics_process(delta: float) -> void:
 	var input_axis = Input.get_axis("mover_izquierda","mover_derecha")
+	caer()
 	apply_gravity(delta)
 	handle_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)

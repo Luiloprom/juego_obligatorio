@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bdxp0jyn03ikl"]
+
+[ext_resource type="Texture2D" uid="uid://ihwkwmmkosqh" path="res://ene_dyn/img/Walk (1).png" id="1_3ua2q"]
+[ext_resource type="Script" uid="uid://ky6vmtub5cgk" path="res://ene_dyn/ene_dyn_zombie.gd" id="1_i41lq"]
+[ext_resource type="Texture2D" uid="uid://docpy7k6qe3pq" path="res://ene_dyn/img/Walk (2).png" id="2_i41lq"]
+[ext_resource type="Texture2D" uid="uid://dwgardhfchqdr" path="res://ene_dyn/img/Walk (3).png" id="3_fxd75"]
+[ext_resource type="Texture2D" uid="uid://ckcbrg8h7hjab" path="res://ene_dyn/img/Walk (4).png" id="4_63ct3"]
+[ext_resource type="Texture2D" uid="uid://bpt1ck2h0iu1j" path="res://ene_dyn/img/Walk (5).png" id="5_ckt0r"]
+[ext_resource type="Texture2D" uid="uid://c54jpvfvpf7tq" path="res://ene_dyn/img/Walk (6).png" id="6_uk5jp"]
+[ext_resource type="Texture2D" uid="uid://bxv5id51leljx" path="res://ene_dyn/img/Walk (7).png" id="7_jgl7y"]
+[ext_resource type="Texture2D" uid="uid://bgjgop07q7j6d" path="res://ene_dyn/img/Walk (8).png" id="8_vas0k"]
+[ext_resource type="Texture2D" uid="uid://gfkm83x3f842" path="res://ene_dyn/img/Walk (9).png" id="9_g5evj"]
+[ext_resource type="Texture2D" uid="uid://camxaahchs8bg" path="res://ene_dyn/img/Walk (10).png" id="10_t4vkq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugewe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3ua2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i41lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fxd75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_63ct3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ckt0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uk5jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jgl7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vas0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g5evj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_t4vkq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ua2q"]
+size = Vector2(300.00003, 453.33328)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i41lq"]
+size = Vector2(393.3335, 573.3333)
+
+[node name="ene_dyn_zombie" type="CharacterBody2D" unique_id=543125026]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_i41lq")
+metadata/_edit_group_ = true
+
+[node name="ani_ene_dyn" type="AnimatedSprite2D" parent="." unique_id=1407649765]
+sprite_frames = SubResource("SpriteFrames_ugewe")
+frame_progress = 0.59902644
+
+[node name="col_ene_dyn" type="CollisionShape2D" parent="." unique_id=1493167024]
+position = Vector2(29.999878, 53.333252)
+shape = SubResource("RectangleShape2D_3ua2q")
+
+[node name="ene_area" type="Area2D" parent="." unique_id=214865512]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ene_area" unique_id=1476060377]
+position = Vector2(10, 26.666748)
+shape = SubResource("RectangleShape2D_i41lq")
+
+[node name="detectorIzquierdo" type="RayCast2D" parent="." unique_id=1475370940]
+position = Vector2(-199.99998, -4.7683716e-07)
+target_position = Vector2(-1.5258789e-05, 313.3333)
+
+[node name="detectorDerecho" type="RayCast2D" parent="." unique_id=695706518]
+position = Vector2(220, 0)
+target_position = Vector2(0, 313.3333)
+
+[connection signal="body_entered" from="ene_area" to="." method="_on_ene_area_body_entered"]
